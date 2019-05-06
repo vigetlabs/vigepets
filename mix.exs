@@ -35,6 +35,7 @@ defmodule Vigepets.MixProject do
     [
       {:absinthe, "~> 1.4"},
       {:absinthe_plug, "~> 1.4"},
+      {:ex_machina, "~> 2.3", only: :test},
       {:phoenix, "~> 1.4.3"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},

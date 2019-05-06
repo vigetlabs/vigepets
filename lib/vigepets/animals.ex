@@ -1,11 +1,11 @@
 defmodule Vigepets.Animals do
   @moduledoc """
-  The Animals context.
+  The Animals context is concerned with users of the application of which the
+  primary type is Puppers.
   """
 
   import Ecto.Query, warn: false
   alias Vigepets.Repo
-
   alias Vigepets.Animals.Pupper
 
   @doc """

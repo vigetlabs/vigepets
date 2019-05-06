@@ -1,6 +1,7 @@
 defmodule Vigepets.Animals.Pupper do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Vigepets.Woofs.Woof
 
   schema "puppers" do
     field :age, :integer
@@ -8,6 +9,8 @@ defmodule Vigepets.Animals.Pupper do
     field :favorite_toy, :string
     field :name, :string
     field :owner_name, :string
+
+    has_many :woofs, Woof
 
     timestamps()
   end
@@ -19,5 +22,6 @@ defmodule Vigepets.Animals.Pupper do
     pupper
     |> cast(attrs, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
+    |> cast_assoc(:woofs, with: &Woof.changeset/2)
   end
 end
