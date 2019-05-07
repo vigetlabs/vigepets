@@ -19,4 +19,11 @@ defmodule Vigepets.Factory do
       pupper: build(:pupper),
     }
   end
+
+  def lick_factory do
+    %Vigepets.Reactions.Lick{
+      pupper: build(:pupper),
+      woof: build(:woof),
+    }
+  end
 end
