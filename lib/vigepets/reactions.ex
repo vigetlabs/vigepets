@@ -1,7 +1,7 @@
 defmodule Vigepets.Reactions do
   @moduledoc """
   The Reactions context is concerned with reactions, primary licks (likes) that
-  users of the application (puppers) put on woofs (comments).
+  users of the application (puppers) put on woofs (posts).
   """
 
   import Ecto.Query, warn: false

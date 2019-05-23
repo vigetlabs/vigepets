@@ -16,14 +16,14 @@ defmodule Vigepets.Factory do
 
     %Vigepets.Woofs.Woof{
       body: body,
-      pupper: build(:pupper),
+      pupper: build(:pupper)
     }
   end
 
   def lick_factory do
     %Vigepets.Reactions.Lick{
       pupper: build(:pupper),
-      woof: build(:woof),
+      woof: build(:woof)
     }
   end
 end

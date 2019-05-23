@@ -22,7 +22,7 @@ defmodule Vigepets.ReactionsTest do
     test "create_lick/1 with valid data creates a lick" do
       pupper = insert(:pupper)
       woof = insert(:woof)
-      assert {:ok, %Lick{} = lick} = Reactions.create_lick(%{pupper_id: pupper.id, woof_id: woof.id})
+      assert {:ok, %Lick{}} = Reactions.create_lick(%{pupper_id: pupper.id, woof_id: woof.id})
     end
 
     test "create_lick/1 with invalid data returns error changeset" do
