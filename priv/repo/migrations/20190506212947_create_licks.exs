@@ -8,5 +8,7 @@ defmodule Vigepets.Repo.Migrations.CreateLicks do
 
       timestamps()
     end
+
+    create unique_index(:licks, [:woof_id, :pupper_id], name: :woof_pupper_index)
   end
 end

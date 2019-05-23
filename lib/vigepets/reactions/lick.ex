@@ -22,5 +22,6 @@ defmodule Vigepets.Reactions.Lick do
     |> validate_required(@required_fields)
     |> foreign_key_constraint(:pupper_id)
     |> foreign_key_constraint(:woof_id)
+    |> unique_constraint(:woof_pupper, name: :woof_pupper_index)
   end
 end
