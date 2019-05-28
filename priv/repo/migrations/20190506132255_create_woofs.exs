@@ -8,9 +8,5 @@ defmodule Vigepets.Repo.Migrations.CreateWoofs do
 
       timestamps()
     end
-
-    alter table(:puppers) do
-      add :woof_id, references(:woofs)
-    end
   end
 end
