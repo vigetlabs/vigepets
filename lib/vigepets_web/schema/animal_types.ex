@@ -7,6 +7,7 @@ defmodule VigepetsWeb.Schema.AnimalTypes do
   @desc "An adorable pupper"
   object :pupper do
     field :id, :id
+    field :age, :integer
     field :favorite_toy, :string
     field :avatar_url, :string
     field :name, :string
