@@ -40,6 +40,7 @@ defmodule Vigepets.MixProject do
       {:cors_plug, "~> 2.0"},
       {:dataloader, "~> 1.0.0"},
       {:ex_machina, "~> 2.3", only: :test},
+      {:ex_spec, "~> 2.0", only: :test},
       {:phoenix, "~> 1.4.3"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
