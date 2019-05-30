@@ -34,7 +34,11 @@ defmodule Vigepets.MixProject do
   defp deps do
     [
       {:absinthe, "~> 1.4"},
+      {:absinthe_ecto, "~> 0.1.3"},
       {:absinthe_plug, "~> 1.4"},
+      {:absinthe_phoenix, "~> 1.4.0"},
+      {:cors_plug, "~> 2.0"},
+      {:dataloader, "~> 1.0.0"},
       {:ex_machina, "~> 2.3", only: :test},
       {:phoenix, "~> 1.4.3"},
       {:phoenix_pubsub, "~> 1.1"},
