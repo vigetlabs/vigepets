@@ -3,6 +3,7 @@ import { ApolloProvider } from "react-apollo";
 import "./App.css";
 import { createClient } from "./util/apollo";
 import Puppers from "./Puppers";
+import NewPupper from "./NewPupper";
 
 function App() {
   const client = createClient();
@@ -10,6 +11,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Puppers />
+      <NewPupper />
     </ApolloProvider>
   );
 }
