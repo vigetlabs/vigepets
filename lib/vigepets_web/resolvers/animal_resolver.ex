@@ -1,9 +1,9 @@
 defmodule VigepetsWeb.Resolvers.AnimalResolver do
-  alias Vigepets.Animals.{Pupper}
+  alias Vigepets.Animals
 
   @spec list_puppers(any, any, any) :: {:ok, any}
   def list_puppers(_parent, _args, _resolutions) do
-    {:ok, Pupper.all()}
+    {:ok, Animals.list_puppers()}
   end
 
   @spec create_pupper(
@@ -13,7 +13,7 @@ defmodule VigepetsWeb.Resolvers.AnimalResolver do
         ) :: {:error, [any]} | {:ok, any}
   def create_pupper(_parent, args, _resolutions) do
     args
-    |> Pupper.create()
+    |> Animals.create_pupper()
     |> case do
       {:ok, pupper} ->
         {:ok, pupper}

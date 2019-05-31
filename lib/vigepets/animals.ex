@@ -18,7 +18,7 @@ defmodule Vigepets.Animals do
 
   """
   def list_puppers do
-    Repo.all(Pupper)
+    Repo.all(from p in Pupper, order_by: [desc: p.id])
   end
 
   @doc """
