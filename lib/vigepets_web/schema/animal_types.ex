@@ -23,7 +23,11 @@ defmodule VigepetsWeb.Schema.AnimalTypes do
 
   object :animal_mutations do
     field :create_pupper, :pupper do
-      arg(:body, non_null(:string))
+      arg(:name, non_null(:string))
+      arg(:avatar_url, :string)
+      arg(:favorite_toy, :string)
+      arg(:owner_name, :string)
+      arg(:age, :integer)
 
       resolve(&Resolvers.AnimalResolver.create_pupper/3)
     end
