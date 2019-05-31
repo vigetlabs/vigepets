@@ -14,4 +14,13 @@ defmodule VigepetsWeb.AnimalResolverTest do
       assert List.last(results).id == first_pupper.id
     end
   end
+
+  describe "#create_pupper/3" do
+    it "creates the pupper when given params" do
+      pupper_params = %{name: "Rex"}
+      {:ok, pupper} = AnimalResolver.create_pupper(nil, pupper_params, nil)
+
+      assert pupper.name == "Rex"
+    end
+  end
 end

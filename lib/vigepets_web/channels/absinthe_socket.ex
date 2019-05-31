@@ -2,8 +2,6 @@ defmodule VigepetsWeb.AbsintheSocket do
   use Phoenix.Socket
   use Absinthe.Phoenix.Socket, schema: VigepetsWeb.Schema
 
-  alias Absinthe.Phoenix.Socket
-
   def connect(_, socket) do
     {:ok, socket}
   end
