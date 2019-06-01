@@ -1,0 +1,19 @@
+#!/bin/bash
+set -e
+
+# Lint
+mix format mix.exs "lib/**/*.{ex,exs}" "test/**/*.{ex,exs}" --check-formatted
+(
+  cd client
+  yarn check --integrity || yarn install
+  # yarn lint
+  yarn run build
+)
+
+# Compile without warnings
+mix compile --force --warnings-as-errors
+
+# Tests!
+mix test
+mix credo -a
+# source ./bin/typespecs
