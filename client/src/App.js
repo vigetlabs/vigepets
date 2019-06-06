@@ -9,7 +9,7 @@ function App() {
   const client = createClient();
 
   return (
-    <ApolloProvider client={client}>
+    <ApolloProvider client={client.client}>
       <Puppers />
       <NewPupper />
     </ApolloProvider>
