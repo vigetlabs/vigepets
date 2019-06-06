@@ -35,6 +35,8 @@ defmodule VigepetsWeb.Schema.AnimalTypes do
 
   object :animal_subscriptions do
     field :pupper_created, :pupper do
+      IO.puts("Pupper created!")
+
       config(fn _, _ ->
         {:ok, topic: "puppers"}
       end)

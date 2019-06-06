@@ -38,15 +38,16 @@ function Puppers() {
 
           return (
             <Subscriber
-              subscribeToNew={() =>
+              subscribeToNew={() => {
+                console.log("Setting subscribeToMore");
                 subscribeToMore({
                   document: PUPPERS_SUBSCRIPTION,
-                  variables: { pupperId: 1 },
                   updateQuery: (prev, next) => {
-                    debugger;
+                    console.log("Whatup heeey");
                   }
-                })
-              }
+                })();
+                console.log("subscribeToMore set");
+              }}
             >
               <ul>
                 {data.listPuppers.map(pupper => (
