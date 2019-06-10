@@ -2,6 +2,7 @@ defmodule Vigepets.Animals.Pupper do
   use Ecto.Schema
   import Ecto.Changeset
   alias Vigepets.Woofs.Woof
+  alias Vigepets.Subwoofs.Subwoof
 
   schema "puppers" do
     field :age, :integer
@@ -11,6 +12,7 @@ defmodule Vigepets.Animals.Pupper do
     field :owner_name, :string
 
     has_many :woofs, Woof
+    has_many :subwoofs, Subwoof
 
     timestamps()
   end
