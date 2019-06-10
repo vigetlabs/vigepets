@@ -1,26 +1,27 @@
-defmodule Vigepets.Woofs.Woof do
+defmodule Vigepets.Subwoofs.Subwoof do
   use Ecto.Schema
   import Ecto.Changeset
 
   alias Vigepets.Animals.Pupper
-  alias Vigepets.Subwoofs.Subwoof
+  alias Vigepets.Woofs.Woof
 
-  schema "woofs" do
+  schema "subwoofs" do
     field :body, :string
     belongs_to :pupper, Pupper
-    has_many :subwoofs, Subwoof
+    belongs_to :woof, Woof
 
     timestamps()
   end
 
   @doc false
-  @required_fields ~w(body pupper_id)a
+  @required_fields ~w(body pupper_id woof_id)a
   @optional_fields ~w()a
 
-  def changeset(woof, attrs) do
-    woof
+  def changeset(subwoof, attrs) do
+    subwoof
     |> cast(attrs, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
     |> foreign_key_constraint(:pupper_id)
+    |> foreign_key_constraint(:woof_id)
   end
 end
