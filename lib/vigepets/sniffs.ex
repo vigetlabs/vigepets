@@ -7,6 +7,8 @@ defmodule Vigepets.Sniffs do
   alias Vigepets.Repo
 
   alias Vigepets.Sniffs.Sniff
+  alias Vigepets.Animals.Pupper
+
 
   @doc """
   Returns the list of sniffs.
@@ -101,4 +103,21 @@ defmodule Vigepets.Sniffs do
   def change_sniff(%Sniff{} = sniff) do
     Sniff.changeset(sniff, %{})
   end
+
+  @doc """
+  Return list of sniffs (puppers being sniffed/followed by the given pupper)
+  """
+  def pupper_sniffs(%Pupper{} = pupper) do
+    pupper = Repo.preload(pupper, :followeds)
+    pupper.followeds
+  end
+
+  @doc """
+  Return list of sniffers (puppers sniffing/follwing the given pupper)
+  """
+  def pupper_sniffers(%Pupper{} = pupper) do
+    pupper = Repo.preload(pupper, :followers)
+    pupper.followers
+  end
+
 end
