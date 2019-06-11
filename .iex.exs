@@ -8,3 +8,8 @@ alias Vigepets.Reactions
 alias Vigepets.Reactions.Lick
 alias Vigepets.Subwoofs
 alias Vigepets.Subwoofs.Subwoof
+alias Vigepets.Sniffs
+alias Vigepets.Sniffs.Sniff
+
+#import Ecto query into iex
+import Ecto.Query
