@@ -7,6 +7,7 @@ defmodule Vigepets.Reactions do
   import Ecto.Query, warn: false
   alias Vigepets.Repo
   alias Vigepets.Reactions.Lick
+  alias Vigepets.Woofs.Woof
 
   @doc """
   Returns the list of licks.
@@ -101,4 +102,13 @@ defmodule Vigepets.Reactions do
   def change_lick(%Lick{} = lick) do
     Lick.changeset(lick, %{})
   end
+
+  @doc """
+  Return list of licks for a given woof
+  """
+  def woof_licks(%Woof{} = woof) do
+    woof = Repo.preload(woof, :licks)
+    woof.licks
+  end
+
 end

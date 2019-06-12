@@ -7,6 +7,7 @@ defmodule Vigepets.Subwoofs do
   alias Vigepets.Repo
 
   alias Vigepets.Subwoofs.Subwoof
+  alias Vigepets.Woofs.Woof
 
   @doc """
   Returns the list of subwoofs.
@@ -101,4 +102,13 @@ defmodule Vigepets.Subwoofs do
   def change_subwoof(%Subwoof{} = subwoof) do
     Subwoof.changeset(subwoof, %{})
   end
+
+  @doc """
+  Return list of subwoofs for a given woof
+  """
+  def woof_subwoofs(%Woof{} = woof) do
+    woof = Repo.preload(woof, :subwoofs)
+    woof.subwoofs
+  end
+  
 end

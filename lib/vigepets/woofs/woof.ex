@@ -4,11 +4,13 @@ defmodule Vigepets.Woofs.Woof do
 
   alias Vigepets.Animals.Pupper
   alias Vigepets.Subwoofs.Subwoof
+  alias Vigepets.Reactions.Lick
 
   schema "woofs" do
     field :body, :string
     belongs_to :pupper, Pupper
     has_many :subwoofs, Subwoof
+    has_many :licks, Lick
 
     timestamps()
   end

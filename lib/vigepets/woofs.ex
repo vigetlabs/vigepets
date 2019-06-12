@@ -7,6 +7,7 @@ defmodule Vigepets.Woofs do
   import Ecto.Query, warn: false
   alias Vigepets.Repo
   alias Vigepets.Woofs.Woof
+  alias Vigepets.Animals.Pupper
 
   @doc """
   Returns the list of woofs.
@@ -101,4 +102,13 @@ defmodule Vigepets.Woofs do
   def change_woof(%Woof{} = woof) do
     Woof.changeset(woof, %{})
   end
+
+    @doc """
+  Return list of woofs for a given pupper
+  """
+  def pupper_woofs(%Pupper{} = pupper) do
+    pupper = Repo.preload(pupper, :woofs)
+    pupper.woofs
+  end
+
 end
