@@ -1,4 +1,4 @@
-defmodule Vigepets.Schema.WoofTypes do
+defmodule VigepetsWeb.Schema.WoofTypes do
   use Absinthe.Schema.Notation
   use Absinthe.Ecto, repo: Vigepets.Repo
 
@@ -9,7 +9,7 @@ defmodule Vigepets.Schema.WoofTypes do
     field :id, :id
     field :body, :string
 
-    field :pupper, :pupper, resolve: assoc(:user)
+    field :pupper, :id, resolve: assoc(:pupper)
   end
 
   object :woof_queries do
@@ -27,7 +27,7 @@ defmodule Vigepets.Schema.WoofTypes do
 
   object :woof_mutations do
     @desc "Create woof"
-    field :create_post, :post do
+    field :create_woof, :woof do
       arg(:body, non_null(:string))
 
       resolve(&Resolvers.WoofResolver.create/3)
