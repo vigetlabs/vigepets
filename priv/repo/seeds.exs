@@ -14,6 +14,7 @@ alias Vigepets.Repo
 alias Vigepets.Animals
 alias Vigepets.Animals.Pupper
 alias Vigepets.Sniffs.Sniff
+alias Vigepets.Woofs.Woof
 
 Faker.start()
 
@@ -46,3 +47,13 @@ Enum.each(Animals.list_puppers, fn(sniffer) ->
 end)
 
 ###### Woofs, Subwoofs, Licks ######
+# Generates a random number of woofs (between 0..50) for each pupper
+Enum.each(Animals.list_puppers, fn(pupper) -> 
+    Enum.each 1..Enum.random(0..50), fn woof -> 
+        Repo.insert! %Woof{
+            # Other shakespeare play options: https://hexdocs.pm/faker/Faker.Lorem.Shakespeare.html
+            body: Faker.Lorem.Shakespeare.as_you_like_it(),
+            pupper_id: pupper.id
+        }   
+    end
+end)
