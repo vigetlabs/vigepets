@@ -9,7 +9,7 @@ defmodule VigepetsWeb.Schema.WoofTypes do
     field :id, :id
     field :body, :string
 
-    field :pupper, :id, resolve: assoc(:pupper)
+    field :pupper, :pupper, resolve: assoc(:pupper)
   end
 
   object :woof_queries do

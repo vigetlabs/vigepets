@@ -8,6 +8,9 @@ function Woofs() {
       listWoofs {
         id
         body
+        pupper {
+          name
+        }
       }
     }
   `;
@@ -24,7 +27,8 @@ function Woofs() {
             <ul>
               {data.listWoofs.map(woof => (
                 <li key={woof.id}>
-                  {woof.body}
+                  {woof.pupper.name} says:
+                  <div>{woof.body}</div>
                 </li>
               ))}
             </ul>
