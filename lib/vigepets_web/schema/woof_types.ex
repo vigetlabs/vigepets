@@ -14,8 +14,8 @@ defmodule VigepetsWeb.Schema.WoofTypes do
 
   object :woof_queries do
     @desc "Get all woofs/posts"
-    field :woofs, list_of(:woof) do
-      resolve(&Resolvers.WoofResolver.list/3)
+    field :list_woofs, list_of(:woof) do
+      resolve(&Resolvers.WoofResolver.list_woofs/3)
     end
 
     @desc "Get a specific woof"

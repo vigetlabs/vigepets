@@ -4,6 +4,7 @@ import "./App.css";
 import { createClient } from "./util/apollo";
 import Puppers from "./Puppers";
 import NewPupper from "./NewPupper";
+import Woofs from "./Woofs";
 
 function App() {
   const client = createClient();
@@ -12,6 +13,7 @@ function App() {
     <ApolloProvider client={client}>
       <Puppers />
       <NewPupper />
+      <Woofs />
     </ApolloProvider>
   );
 }

@@ -1,7 +1,7 @@
 defmodule VigepetsWeb.Resolvers.WoofResolver do
   alias Vigepets.Woofs
 
-  def list(_parent, _args, _resolutions) do
+  def list_woofs(_parent, _args, _resolutions) do
     {:ok, Woofs.list_woofs()}
   end
 
