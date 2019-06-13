@@ -2,7 +2,7 @@ defmodule VigepetsWeb.Schema.WoofTypes do
   use Absinthe.Schema.Notation
   use Absinthe.Ecto, repo: Vigepets.Repo
 
-  alias Vigepets.Resolvers
+  alias VigepetsWeb.Resolvers
 
   @desc "A post (woof) on the site"
   object :woof do

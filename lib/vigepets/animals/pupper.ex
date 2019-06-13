@@ -4,9 +4,7 @@ defmodule Vigepets.Animals.Pupper do
 
   alias Vigepets.Woofs.Woof
   alias Vigepets.Subwoofs.Subwoof
-  alias Vigepets.Sniffs.Sniff
   alias Vigepets.Animals.Pupper
-  alias Vigepets.Repo
 
   schema "puppers" do
     field :age, :integer
