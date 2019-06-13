@@ -15,17 +15,6 @@ defmodule Vigepets.Woofs.Woof do
     timestamps()
   end
 
-  def create(attrs) do
-    attrs
-    |> changeset()
-    |> Repo.insert()
-  end
-
-  def changeset(attrs) do
-    %__MODULE__{}
-    |> changeset(attrs)
-  end
-
   @doc false
   @required_fields ~w(body pupper_id)a
   @optional_fields ~w()a
