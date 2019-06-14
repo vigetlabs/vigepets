@@ -10,8 +10,6 @@ defmodule VigepetsWeb.Schema do
   query do
     import_fields(:animal_queries)
     import_fields(:woof_queries)
-    import_fields(:subwoof_queries)
-    import_fields(:lick_queries)
   end
 
   mutation do

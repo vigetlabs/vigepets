@@ -19,7 +19,7 @@ defmodule Vigepets.Woofs do
 
   """
   def list_woofs do
-    Repo.all(Woof) |> Repo.preload(:pupper)
+    Repo.all(Woof) |> Repo.preload(:pupper) |> Repo.preload(:subwoofs) |> Repo.preload(:licks)
   end
 
   @doc """

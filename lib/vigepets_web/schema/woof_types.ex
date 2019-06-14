@@ -10,21 +10,15 @@ defmodule VigepetsWeb.Schema.WoofTypes do
     field :body, :string
 
     field :pupper, :pupper, resolve: assoc(:pupper)
-    field :subwoofs, list_of (:subwoof) do 
-      resolve(
-        assoc(:subwoofs, fn woof_subwoofs, woof, _context ->
-          woof_subwoofs
-        end)
-      )
-    end
-
-    field :licks, list_of (:lick) do 
-      resolve(
-        assoc(:licks, fn woof_licks, woof, _context ->
-          woof_licks
-        end)
-      )
-    end
+    field :subwoofs, list_of(:subwoof), resolve: assoc(:subwoofs)
+    field :licks, list_of(:lick), resolve: assoc(:licks)
+    # field :subwoofs, list_of (:subwoof) do 
+    #   resolve(
+    #     assoc(:subwoofs, fn woof_subwoofs, woof, _context ->
+    #       woof_subwoofs |> <change order>
+    #     end)
+    #   )
+    # end
   end
 
   object :woof_queries do
