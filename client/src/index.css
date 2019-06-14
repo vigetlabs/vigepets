@@ -15,3 +15,35 @@ code {
 .l1 {
   padding: 2em 0 0 0;
 }
+
+img {
+  width: 1em;
+}
+
+scan {
+  padding: .5em;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+b {
+  font-weight: 500; 
+  color: #333333;
+}
+
+.post-body {
+  font-size: 1.2em;
+  font-weight: 200;
+  padding: .25em 0 0 0;
+}
+
+.post-lick {
+  font-size: .5em;
+  color: darkmagenta;
+  padding: 0 0 1em 0;
+}
+
+.post-comment {
+  font-size: .8em;
+  font-weight: 300;
+}

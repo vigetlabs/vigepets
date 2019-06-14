@@ -10,9 +10,13 @@ function Woofs() {
         body
         pupper {
           name
+          avatar_url
         }
         subwoofs {
           body
+          pupper{
+            name
+          }
         }
         licks {
           pupper {
@@ -35,17 +39,16 @@ function Woofs() {
             <ul>
               {data.listWoofs.map(woof => (
                 <li key={woof.id} class='l1'>
-                  {woof.pupper.name} says:
-                  <div>{woof.body}</div>
-                  <div>The following pups licked this: {woof.licks.map(lick => (lick.pupper.name + " "))}</div>
+                  <img src={woof.pupper.avatar_url}></img>
+                  <scan>{woof.pupper.name}</scan>
+                  <div class="post-body">{woof.body}</div>
+                  <div class="post-lick">Licks: {woof.licks.map(lick => (lick.pupper.name + " "))}</div>
                   <div>
-                    <ul>
-                      {woof.subwoofs.map(subwoof => (
-                        <li key={subwoof.id}>
-                          <div>{subwoof.body}</div>
-                        </li>
-                      ))}
-                    </ul>
+                    {woof.subwoofs.map(subwoof => (
+                      <div class="post-comment">
+                        <b>{subwoof.pupper.name}</b> - {subwoof.body}
+                      </div>
+                    ))}
                   </div>
                 </li>
               ))}
