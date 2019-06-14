@@ -27,7 +27,7 @@ function Puppers() {
           return (
             <ul>
               {data.listPuppers.map(pupper => (
-                <li key={pupper.id}>
+                <li key={pupper.id} class='l1'>
                   {pupper.name} belongs to {pupper.ownerName}, is {pupper.age}{" "}
                   years old and loves to play with {pupper.favoriteToy}
                 </li>

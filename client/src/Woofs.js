@@ -11,12 +11,15 @@ function Woofs() {
         pupper {
           name
         }
+        subwoofs {
+          body
+        }
       }
     }
   `;
 
   return (
-    <div>
+    <div>      
       <h1>Woofs!</h1>
       <Query query={LIST_WOOFS}>
         {({ loading, error, data }) => {
@@ -26,9 +29,18 @@ function Woofs() {
           return (
             <ul>
               {data.listWoofs.map(woof => (
-                <li key={woof.id}>
+                <li key={woof.id} class='l1'>
                   {woof.pupper.name} says:
                   <div>{woof.body}</div>
+                  <div>
+                    <ul>
+                      {woof.subwoofs.map(subwoof => (
+                        <li key={subwoof.id}>
+                          <div>{subwoof.body}</div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -39,3 +51,10 @@ function Woofs() {
   );
 }
 export default Woofs;
+
+
+//{/* <Query query={WOOF_SUBWOOFS}>
+  //                    <ul>
+    //                  
+      //                </ul>
+        //            </Query> */}

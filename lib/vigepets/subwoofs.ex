@@ -7,6 +7,7 @@ defmodule Vigepets.Subwoofs do
   alias Vigepets.Repo
 
   alias Vigepets.Subwoofs.Subwoof
+  alias Vigepets.Woofs
   alias Vigepets.Woofs.Woof
 
   @doc """
