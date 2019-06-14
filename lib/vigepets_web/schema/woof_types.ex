@@ -2,6 +2,7 @@ defmodule VigepetsWeb.Schema.WoofTypes do
   use Absinthe.Schema.Notation
   use Absinthe.Ecto, repo: Vigepets.Repo
 
+  import Ecto.Query
   alias VigepetsWeb.Resolvers
 
   @desc "A post (woof) on the site"
@@ -10,15 +11,14 @@ defmodule VigepetsWeb.Schema.WoofTypes do
     field :body, :string
 
     field :pupper, :pupper, resolve: assoc(:pupper)
-    field :subwoofs, list_of(:subwoof), resolve: assoc(:subwoofs)
     field :licks, list_of(:lick), resolve: assoc(:licks)
-    # field :subwoofs, list_of (:subwoof) do 
-    #   resolve(
-    #     assoc(:subwoofs, fn woof_subwoofs, woof, _context ->
-    #       woof_subwoofs |> <change order>
-    #     end)
-    #   )
-    # end
+    field :subwoofs, list_of(:subwoof) do 
+      resolve(
+        assoc(:subwoofs, fn woof_subwoofs, woof, _context ->
+          woof_subwoofs |> order_by(asc: :updated_at)
+        end)
+      )
+    end
   end
 
   object :woof_queries do

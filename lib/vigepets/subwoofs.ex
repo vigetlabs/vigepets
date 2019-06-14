@@ -109,7 +109,7 @@ defmodule Vigepets.Subwoofs do
   """
   def woof_subwoofs(%Woof{} = woof) do
     woof = Repo.preload(woof, :subwoofs)
-    woof.subwoofs
+    woof.subwoofs |> order_by(desc: :id)
   end
   
 end
