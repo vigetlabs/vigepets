@@ -17,6 +17,14 @@ defmodule VigepetsWeb.Schema.WoofTypes do
         end)
       )
     end
+
+    field :licks, list_of (:lick) do 
+      resolve(
+        assoc(:licks, fn woof_licks, woof, _context ->
+          woof_licks
+        end)
+      )
+    end
   end
 
   object :woof_queries do

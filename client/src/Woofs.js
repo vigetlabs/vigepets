@@ -14,6 +14,11 @@ function Woofs() {
         subwoofs {
           body
         }
+        licks {
+          pupper {
+            name
+          }
+        }
       }
     }
   `;
@@ -32,6 +37,7 @@ function Woofs() {
                 <li key={woof.id} class='l1'>
                   {woof.pupper.name} says:
                   <div>{woof.body}</div>
+                  <div>The following pups licked this: {woof.licks.map(lick => (lick.pupper.name + " "))}</div>
                   <div>
                     <ul>
                       {woof.subwoofs.map(subwoof => (
