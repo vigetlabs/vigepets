@@ -20,7 +20,7 @@ defmodule Vigepets.Sniffs do
 
   """
   def list_sniffs do
-    Repo.all(Sniff)
+    Repo.all(Sniff) |> Repo.preload([:follower, :followed])
   end
 
   @doc """
@@ -37,7 +37,9 @@ defmodule Vigepets.Sniffs do
       ** (Ecto.NoResultsError)
 
   """
-  def get_sniff!(id), do: Repo.get!(Sniff, id)
+  def get_sniff!(id) do
+    Repo.get!(Sniff, id) |> Repo.preload([:followed, :follower])
+  end
 
   @doc """
   Creates a sniff.

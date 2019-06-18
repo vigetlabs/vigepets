@@ -19,7 +19,7 @@ defmodule Vigepets.Woofs do
 
   """
   def list_woofs do
-    Repo.all(from w in Woof, order_by: [desc: w.updated_at, desc: w.id])
+    Repo.all(from w in Woof, order_by: [desc: w.updated_at, desc: w.id]) |> Repo.preload(:pupper)
   end
 
   @doc """
