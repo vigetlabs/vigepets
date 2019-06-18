@@ -3,11 +3,11 @@ import gql from "graphql-tag";
 import { Mutation } from "react-apollo"
 
 const CREATE_WOOF = gql`
-  mutation CreateWoof($body: String!) {
-     createWoof(body: $body) {
-       id
-     }
+mutation CreateWoof($body: String!, $pupper: Int!) {
+   createWoof(body: $body, pupperId: $pupper) {
+     id
    }
+ }
  `;
 
 const CREATE_SUBWOOF = gql`
@@ -20,7 +20,7 @@ const CREATE_SUBWOOF = gql`
 
 const NewItem = ({ feedType, params }) => {
   const [body, setBody] = useState("");
-  const [pupperId, setPupperId] = useState("");
+  const [pupper, setPupper] = useState("");
 
   const mutation = feedType === "subwoof" ? CREATE_SUBWOOF : CREATE_WOOF;
 
@@ -28,7 +28,7 @@ const NewItem = ({ feedType, params }) => {
     <Mutation mutation={mutation}
       onCompleted={() => {
         setBody("");
-        setPupperId(undefined);
+        setPupper(undefined);
       }}
     >
       {(submit, { data, loading, error }) => {
@@ -36,7 +36,7 @@ const NewItem = ({ feedType, params }) => {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              submit({ variables: { body, pupperId } });
+              submit({ variables: { body, pupper } });
             }}
           >
             <input
@@ -48,13 +48,13 @@ const NewItem = ({ feedType, params }) => {
               onChange={(e) => setBody(e.target.value)}
             />
             <input
-              name="pupperId"
+              name="pupper"
               type="number"
-              placeholder="pupperid"
-              value={pupperId}
-              onChange={(e) => setPupperId(parseInt(e.target.value))}
+              placeholder="pupper id"
+              value={pupper}
+              onChange={(e) => setPupper(parseInt(e.target.value))}
             />
-            <input type="submit" value="Create Woof" />
+            <input type="submit" value="Bork" />
           </form>
         );
       }}

@@ -12,7 +12,7 @@ defmodule VigepetsWeb.Schema.WoofTypes do
 
     field :pupper, :pupper, resolve: assoc(:pupper)
     field :licks, list_of(:lick), resolve: assoc(:licks)
-    field :subwoofs, list_of(:subwoof) do 
+    field :subwoofs, list_of(:subwoof) do
       resolve(
         assoc(:subwoofs, fn woof_subwoofs, woof, _context ->
           woof_subwoofs |> order_by(asc: :updated_at)
@@ -38,6 +38,7 @@ defmodule VigepetsWeb.Schema.WoofTypes do
     @desc "Create woof"
     field :create_woof, :woof do
       arg(:body, non_null(:string))
+      arg(:pupper_id, non_null(:integer))
 
       resolve(&Resolvers.WoofResolver.create/3)
     end
