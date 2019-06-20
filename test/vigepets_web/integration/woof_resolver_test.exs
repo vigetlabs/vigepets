@@ -1,7 +1,6 @@
 defmodule VigepetsWeb.Integration.WoofResolverTest do
   use VigepetsWeb.ConnCase
   alias Vigepets.AbsintheHelpers
-  require IEx
 
   describe "#list_woofs/3" do
     it "returns woofs" do
@@ -47,7 +46,6 @@ defmodule VigepetsWeb.Integration.WoofResolverTest do
         |> post("graphiql", AbsintheHelpers.mutation_skeleton(mutation))
 
       woof = json_response(res, 200)["data"]["createWoof"]
-      IEx.pry
       assert woof["body"] == "Bork Bork"
       assert woof["pupper"]["id"] == to_string(pupper.id)
     end
