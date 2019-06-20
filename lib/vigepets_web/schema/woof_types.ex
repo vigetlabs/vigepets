@@ -40,7 +40,7 @@ defmodule VigepetsWeb.Schema.WoofTypes do
       arg(:body, non_null(:string))
       arg(:pupper_id, non_null(:integer))
 
-      resolve(&Resolvers.WoofResolver.create/3)
+      resolve(&Resolvers.WoofResolver.create_woof/3)
     end
   end
 

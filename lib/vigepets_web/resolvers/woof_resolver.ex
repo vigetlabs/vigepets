@@ -12,7 +12,7 @@ defmodule VigepetsWeb.Resolvers.WoofResolver do
     end
   end
 
-  def create(_parent, args, _resolutions) do
+  def create_woof(_parent, args, _resolutions) do
       args
       |> Woofs.create_woof()
       |> case do
