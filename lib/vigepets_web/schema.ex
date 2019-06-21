@@ -20,5 +20,6 @@ defmodule VigepetsWeb.Schema do
   subscription do
     import_fields(:animal_subscriptions)
     import_fields(:woof_subscriptions)
+    import_fields(:subwoof_subscriptions)
   end
 end

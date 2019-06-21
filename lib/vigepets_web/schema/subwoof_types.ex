@@ -19,4 +19,18 @@ defmodule VigepetsWeb.Schema.SubwoofTypes do
       resolve(&Resolvers.SubwoofResolver.woof_subwoofs/3)
     end
   end
+
+  object :subwoof_subscriptions do
+    field :subwoof_created, :subwoof do
+      config(fn _, _ ->
+        {:ok, topic: "subwoofs"}
+      end)
+
+      trigger(:create_subwoof,
+        topic: fn _ ->
+          "subwoofs"
+        end
+      )
+    end
+  end
 end
