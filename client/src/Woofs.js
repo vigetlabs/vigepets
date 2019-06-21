@@ -60,10 +60,3 @@ function Woofs() {
   );
 }
 export default Woofs;
-
-
-//{/* <Query query={WOOF_SUBWOOFS}>
-  //                    <ul>
-    //
-      //                </ul>
-        //            </Query> */}
