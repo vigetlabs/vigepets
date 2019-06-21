@@ -26,4 +26,21 @@ defmodule Vigepets.Factory do
       woof: build(:woof)
     }
   end
+
+  def sniff_factory do
+    %Vigepets.Sniffs.Sniff{
+      follower: build(:pupper),
+      followed: build(:pupper)
+    }
+  end
+
+  def subwoof_factory do
+    body = sequence(:body, &"Subwoof! (Part #{&1})")
+
+    %Vigepets.Subwoofs.Subwoof{
+      body: body,
+      pupper: build(:pupper),
+      woof: build(:woof)
+    }
+  end
 end

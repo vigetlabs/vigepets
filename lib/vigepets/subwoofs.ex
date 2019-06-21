@@ -7,6 +7,7 @@ defmodule Vigepets.Subwoofs do
   alias Vigepets.Repo
 
   alias Vigepets.Subwoofs.Subwoof
+  alias Vigepets.Woofs
   alias Vigepets.Woofs.Woof
 
   @doc """
@@ -19,7 +20,7 @@ defmodule Vigepets.Subwoofs do
 
   """
   def list_subwoofs do
-    Repo.all(Subwoof)
+    Repo.all(Subwoof) |> Repo.preload([:pupper, woof: :pupper])
   end
 
   @doc """
@@ -36,7 +37,9 @@ defmodule Vigepets.Subwoofs do
       ** (Ecto.NoResultsError)
 
   """
-  def get_subwoof!(id), do: Repo.get!(Subwoof, id)
+  def get_subwoof!(id) do
+    Repo.get!(Subwoof, id) |> Repo.preload([:pupper, woof: :pupper])
+  end
 
   @doc """
   Creates a subwoof.
@@ -108,7 +111,7 @@ defmodule Vigepets.Subwoofs do
   """
   def woof_subwoofs(%Woof{} = woof) do
     woof = Repo.preload(woof, :subwoofs)
-    woof.subwoofs
+    woof.subwoofs |> order_by(desc: :id)
   end
-  
+
 end

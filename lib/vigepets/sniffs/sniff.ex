@@ -3,7 +3,6 @@ defmodule Vigepets.Sniffs.Sniff do
   import Ecto.Changeset
 
   alias Vigepets.Animals.Pupper
-  alias Vigepets.Woofs.Woof
 
   schema "sniffs" do
     belongs_to :follower, Pupper
