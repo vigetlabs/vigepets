@@ -1,11 +1,9 @@
 import gql from "graphql-tag";
 import React from "react";
 import { Query } from "react-apollo";
-import renderIf from "render-if";
 import produce from "immer";
 import Subscriber from "./Subscriber";
 import NewItem from "./NewItem";
-
   export const LIST_WOOFS = gql`
     {
       listWoofs {
@@ -16,6 +14,7 @@ import NewItem from "./NewItem";
           avatar_url
         }
         subwoofs {
+          id
           body
           pupper{
             name
@@ -40,6 +39,18 @@ import NewItem from "./NewItem";
           name
           avatar_url
         }
+        subwoofs {
+          id
+          body
+          pupper{
+            name
+          }
+        }
+        licks {
+          pupper {
+            name
+          }
+        }
       }
     }
   `;
@@ -55,51 +66,41 @@ const Woofs =({subscribeToNew, newItemPosition, createParams}) => {
 
           return (
             <>
+            <NewItem feedType="woofs" params={createParams} />
             <Subscriber subscribeToNew={() =>
                 subscribeToMore({
                   document: WOOFS_SUBSCRIPTION,
                   updateQuery: (prev, { subscriptionData }) => {
                     if (!subscriptionData.data) return prev;
-                    const newPost = subscriptionData.data.postCreated;
-
+                    const newWoof = subscriptionData.data.woofCreated;
                     // Check that we don't already have the
                     // post stored.
-                    if (prev.posts.find((post) => post.id === newPost.id)) {
+
+                    if (prev.listWoofs.find((woof) => woof.id === newWoof.id)) {
                       return prev;
                     }
 
                     return produce(prev, (next) => {
-                      next.posts.unshift(newPost);
+                      next.listWoofs.unshift(newWoof);
                     });
                   },
                 })
               }>
-              {renderIf(newItemPosition === "top")(
-                <NewItem feedType="woofs" params={createParams} />,
-              )}
-              <ul>
-                {data.listWoofs.map(woof => (
-                  <li key={woof.id} className='l1'>
-                    <img src={woof.pupper.avatar_url}></img>
-                    <span>{woof.pupper.name}</span>
-                    <div className="post-body">{woof.body}</div>
-                    <div className="post-lick">Licks: {woof.licks.map(lick => (lick.pupper.name + " "))}</div>
-                    <div>
-                      {woof.subwoofs.map(subwoof => (
-                        <div className="post-comment">
-                          <b>{subwoof.pupper.name}</b> - {subwoof.body}
-                        </div>
-                      ))}
+              {data.listWoofs.map(woof => (
+                <li key={woof.id} className='l1'>
+                  <img src={woof.pupper.avatar_url}></img>
+                  <span>{woof.pupper.name}</span>
+                  <div className="post-body">{woof.body}</div>
+                  <div className="post-lick">Licks: {woof.licks.map(lick => (lick.pupper.name + " "))}</div>
+                  {woof.subwoofs.map(subwoof => (
+                    <div key={subwoof.id} className="post-comment">
+                      <b>{subwoof.pupper.name}</b> - {subwoof.body}
                     </div>
-                  </li>
-                ))}
-              </ul>
-              {renderIf(newItemPosition === "bottom")(
-                <NewItem feedType="woofs" params={createParams} />,
-              )}
+                  ))}
+                </li>
+              ))}
             </Subscriber>
           </>
-
           );
         }}
       </Query>

@@ -6,7 +6,6 @@ import { createClient } from "./util/apollo";
 import Puppers from "./Puppers";
 import NewPupper from "./NewPupper";
 import Woofs from "./Woofs";
-import NewItem from "./NewItem";
 
 function App() {
   const client = createClient();
@@ -18,7 +17,6 @@ function App() {
           <Route exact path="/puppers" component={Puppers} />
           <Route exact path="/puppers/new" component={NewPupper} />
           <Route exact path="/woofs" component={Woofs} />
-          <Route exact path="/woofs/new" component={NewItem} />
         </Switch>
       </BrowserRouter>
     </ApolloProvider>
