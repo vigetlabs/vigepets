@@ -6,14 +6,16 @@ defmodule Vigepets.Application do
   use Application
 
   def start(_type, _args) do
+    import Supervisor.Spec
     # List all child processes to be supervised
     children = [
       # Start the Ecto repository
       Vigepets.Repo,
       # Start the endpoint when the application starts
-      VigepetsWeb.Endpoint
+      VigepetsWeb.Endpoint,
       # Starts a worker by calling: Vigepets.Worker.start_link(arg)
       # {Vigepets.Worker, arg},
+      supervisor(Absinthe.Subscription, [VigepetsWeb.Endpoint])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

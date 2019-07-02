@@ -28,7 +28,7 @@ const NewItem = ({ feedType, params }) => {
     <Mutation mutation={mutation}
       onCompleted={() => {
         setBody("");
-        setPupper(undefined);
+        setPupper("");
       }}
     >
       {(submit, { data, loading, error }) => {
